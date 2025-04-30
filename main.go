@@ -28,7 +28,7 @@ func main() {
 
 	fmt.Println("Starting http server...")
 
-	http.HandleFunc("/challenge", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/main", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Print("Request received\n")
 
 		w.Header().Add("Content-Type", "text/json")
