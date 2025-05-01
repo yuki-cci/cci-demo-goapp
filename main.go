@@ -32,7 +32,7 @@ func main() {
 		fmt.Print("Request received\n")
 
 		w.Header().Add("Content-Type", "text/json")
-		w.Write([]byte("{\"response\": \"Challenge accepted!\"}"))
+		w.Write([]byte("{\"response\": \"Request received!\"}"))
 	})
 
 	port := os.Getenv("PORT")
