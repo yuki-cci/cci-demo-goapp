@@ -1,4 +1,4 @@
-module dce/challenge
+module cci/main
 
 go 1.21.1
 
