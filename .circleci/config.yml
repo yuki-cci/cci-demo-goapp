@@ -35,7 +35,7 @@ jobs:
           path: myapp
       - aws-cli/install:
           version: latest
-      - aws-s3/sync:
+      - aws-s3/copy:
           from: myapp
           to: 's3://cci-buket'
 
