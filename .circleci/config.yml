@@ -33,6 +33,8 @@ jobs:
           paths: myapp
       - store_artifacts:
           path: myapp
+      - aws-cli/install:
+          version: latest
       - aws-s3/sync:
           from: .
           to: 's3://cci-buket'
