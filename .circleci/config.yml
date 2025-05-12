@@ -56,11 +56,20 @@ jobs:
     docker:
       - image: cimg/go:1.23
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:R+RxsogfKi8zGNT3BbfmdbqDvkCOXKYIq+FTwjPlfHE"
       - attach_workspace:
           at: .
       - run:
           name: Confirmation of build application exit 
           command: ls -l .
+      - run:
+          name: Deploy to EC2 Server
+          command: scp -o StrictHostKeyChecking=no ./myapp ${SSH_USER}@${SERVER_IP}:/home/foo/www/myapp
+      - run:
+          name: Start myapp
+          command: ssh -o StrictHostKeyChecking=no ${SSH_USER}@${SERVER_IP} "nohup /home/foo/www/myapp/myapp > myapp.log 2>&1 &"
 
 workflows:
   build-test-and-deploy:
